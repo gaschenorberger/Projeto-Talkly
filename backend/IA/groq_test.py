@@ -1,9 +1,9 @@
 from groq import Groq
-from ..core.config import GROQ_API_KEY 
+from ..core.config import GROQ_API_KEY, MODEL, TEMPERATURE, MAX_TOKENS
 
 client = Groq(api_key=GROQ_API_KEY)
+MODEL = MODEL
 
-MODEL = "llama-3.1-8b-instant"
 
 # Prompt base do Talkly
 system_prompt = """
@@ -107,8 +107,8 @@ while True:
         response = client.chat.completions.create(
             model=MODEL,
             messages=conversation,
-            temperature=0.7,
-            max_tokens=300
+            temperature=TEMPERATURE,
+            max_tokens=MAX_TOKENS
         )
 
         ai_reply = response.choices[0].message.content
