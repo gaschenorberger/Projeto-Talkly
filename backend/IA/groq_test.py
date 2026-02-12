@@ -1,5 +1,18 @@
+import sys
+import os
+
+# Adiciona a raiz do projeto ao path
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+)
+
+# =========================================================
+
+
 from groq import Groq
-from ..core.config import GROQ_API_KEY, MODEL, TEMPERATURE, MAX_TOKENS
+from backend.core.config import GROQ_API_KEY, MODEL, TEMPERATURE, MAX_TOKENS
+
+
 
 client = Groq(api_key=GROQ_API_KEY)
 MODEL = MODEL
